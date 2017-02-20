@@ -16,6 +16,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     var suggestedSearchFoods: [String] = []
     var filteredSuggestedSearchFoods: [String] = []
     var scopeButtonTitles = ["Recommended", "Search Results", "Saved"]
+    var apiSearchResults: [(name: String, idValue: String)] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +26,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.definesPresentationContext = true
         
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        //self.navigationController?.navigationBar.isTranslucent = false
+        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        //self.navigationController?.navigationBar.shadowImage = UIImage()
         
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
-        searchController.hidesNavigationBarDuringPresentation = true
+        searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchBar.frame = CGRect(x: searchController.searchBar.frame.origin.x, y: searchController.searchBar.frame.origin.y, width: searchController.searchBar.frame.width, height: CGFloat(Constants.kSearchBarHeight))
@@ -57,11 +58,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = mainTable.dequeueReusableCell(withIdentifier: Constants.kMainCellID)
         var foodName: String
         
-        if searchController.isActive && searchController.searchBar.text != "" {
-            foodName = filteredSuggestedSearchFoods[indexPath.row]
-        }
-        else {
-            foodName = suggestedSearchFoods[indexPath.row]
+        switch (searchController.searchBar.selectedScopeButtonIndex) {
+        case 0:
+            if searchController.isActive && searchController.searchBar.text != "" {
+                foodName = filteredSuggestedSearchFoods[indexPath.row]
+            }
+            else {
+                foodName = suggestedSearchFoods[indexPath.row]
+            }
+        case 1:
+            foodName = apiSearchResults[indexPath.row].name
+        case 2:
+            foodName = ""
+        default:
+            foodName = ""
         }
         
         cell?.textLabel?.text = foodName
@@ -72,13 +82,49 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if searchController.isActive && searchController.searchBar.text != "" {
-            return filteredSuggestedSearchFoods.count
+        switch (searchController.searchBar.selectedScopeButtonIndex) {
+        case 0:
+            if searchController.isActive && searchController.searchBar.text != "" {
+                return filteredSuggestedSearchFoods.count
+            }
+            else {
+                return suggestedSearchFoods.count
+            }
+        case 1:
+            return apiSearchResults.count
+        case 2:
+            return 0
+        default:
+            return 0
         }
-        else {
-            return suggestedSearchFoods.count
+    }
+    
+    //MARK: UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch (searchController.searchBar.selectedScopeButtonIndex) {
+        case 0:
+            var searchFoodName: String
+            if searchController.isActive && searchController.searchBar.text != "" {
+                searchFoodName = filteredSuggestedSearchFoods[indexPath.row]
+            }
+            else {
+                searchFoodName = suggestedSearchFoods[indexPath.row]
+            }
+            searchController.searchBar.selectedScopeButtonIndex = 1
+            APIDataController.createAPIRequest(searchString: searchFoodName, completionHandler: { (json) in
+                self.apiSearchResults = APIDataController.jsonToUSDAFormat(json: json)
+                DispatchQueue.main.async {
+                    self.mainTable.reloadData()
+                }
+            })
+        case 1:
+            print("1")
+        case 2:
+            print("2")
+        default:
+            print("D")
         }
-        
     }
     
     //MARK: UISearchResultsUpdating
@@ -94,8 +140,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if let searchText = searchBar.text {
-            createAPIRequest(searchString: searchText)
+            APIDataController.createAPIRequest(searchString: searchText, completionHandler: { (json) in
+                self.apiSearchResults = APIDataController.jsonToUSDAFormat(json: json)
+                DispatchQueue.main.async {
+                    self.mainTable.reloadData()
+                }
+            })
         }
+        searchController.searchBar.selectedScopeButtonIndex = 1
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        mainTable.reloadData()
     }
     
     //MARK: Helpers

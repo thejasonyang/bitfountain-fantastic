@@ -7,12 +7,30 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 class APIDataController {
     
-    class func
+    class func jsonToUSDAFormat (json: [String : Any]) -> [(name: String, idValue: String)] {
+        var searchResults: [(name: String, idValue: String)] = []
+        var result: (name: String, idValue: String)
+        
+        if let searchHits = json["hits"] as? [AnyObject] {
+            for itemData in searchHits {
+                if itemData["_id"] != nil && itemData["fields"] != nil {
+                    let fieldsData = itemData["fields"] as? [String : Any]
+                    let idValue = itemData["_id"] as! String
+                    let name = fieldsData?["item_name"] as! String
+                    result = (name: name, idValue: idValue)
+                    searchResults += [result]
+                }
+            }
+        }
+        return searchResults
+    }
     
-    class func createAPIRequest (searchString: String) {
+    class func createAPIRequest (searchString: String, completionHandler: @escaping (_ json: [String : Any]) -> Void) {
         var request = URLRequest(url: URL(string: Constants.kAPIURL)!)
         let session = URLSession.shared
         request.httpMethod = "POST"
@@ -36,7 +54,9 @@ class APIDataController {
                 print("error")
                 return
             }
-            print (json)
+            if json != nil {
+                completionHandler(json!)
+            }
         }
         task.resume()
     }
