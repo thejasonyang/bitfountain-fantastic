@@ -8,22 +8,28 @@
 
 /* Begin PBXBuildFile section */
 		C81AEE281E5A6DE7003D4BCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AEE271E5A6DE7003D4BCF /* AppDelegate.swift */; };
-		C81AEE2A1E5A6DE7003D4BCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AEE291E5A6DE7003D4BCF /* ViewController.swift */; };
 		C81AEE2D1E5A6DE7003D4BCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81AEE2B1E5A6DE7003D4BCF /* Main.storyboard */; };
 		C81AEE301E5A6DE7003D4BCF /* Fantastic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C81AEE2E1E5A6DE7003D4BCF /* Fantastic.xcdatamodeld */; };
 		C81AEE321E5A6DE7003D4BCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C81AEE311E5A6DE7003D4BCF /* Assets.xcassets */; };
 		C81AEE351E5A6DE7003D4BCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C81AEE331E5A6DE7003D4BCF /* LaunchScreen.storyboard */; };
+		C81AEE3D1E5A6FBE003D4BCF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AEE3C1E5A6FBE003D4BCF /* MainViewController.swift */; };
+		C81AEE411E5A704E003D4BCF /* Ref.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AEE401E5A704E003D4BCF /* Ref.swift */; };
+		C81AEE431E5A72BB003D4BCF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AEE421E5A72BB003D4BCF /* DetailViewController.swift */; };
+		C81AEE451E5AD96D003D4BCF /* APIDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AEE441E5AD96D003D4BCF /* APIDataController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C81AEE241E5A6DE7003D4BCF /* Fantastic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fantastic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81AEE271E5A6DE7003D4BCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C81AEE291E5A6DE7003D4BCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C81AEE2C1E5A6DE7003D4BCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C81AEE2F1E5A6DE7003D4BCF /* Fantastic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Fantastic.xcdatamodel; sourceTree = "<group>"; };
 		C81AEE311E5A6DE7003D4BCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C81AEE341E5A6DE7003D4BCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C81AEE361E5A6DE7003D4BCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C81AEE3C1E5A6FBE003D4BCF /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
+		C81AEE401E5A704E003D4BCF /* Ref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ref.swift; path = ../Ref.swift; sourceTree = "<group>"; };
+		C81AEE421E5A72BB003D4BCF /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C81AEE441E5AD96D003D4BCF /* APIDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDataController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +63,11 @@
 			isa = PBXGroup;
 			children = (
 				C81AEE271E5A6DE7003D4BCF /* AppDelegate.swift */,
-				C81AEE291E5A6DE7003D4BCF /* ViewController.swift */,
+				C81AEE3C1E5A6FBE003D4BCF /* MainViewController.swift */,
+				C81AEE441E5AD96D003D4BCF /* APIDataController.swift */,
+				C81AEE421E5A72BB003D4BCF /* DetailViewController.swift */,
 				C81AEE2B1E5A6DE7003D4BCF /* Main.storyboard */,
+				C81AEE401E5A704E003D4BCF /* Ref.swift */,
 				C81AEE311E5A6DE7003D4BCF /* Assets.xcassets */,
 				C81AEE331E5A6DE7003D4BCF /* LaunchScreen.storyboard */,
 				C81AEE361E5A6DE7003D4BCF /* Info.plist */,
@@ -140,7 +149,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C81AEE2A1E5A6DE7003D4BCF /* ViewController.swift in Sources */,
+				C81AEE451E5AD96D003D4BCF /* APIDataController.swift in Sources */,
+				C81AEE3D1E5A6FBE003D4BCF /* MainViewController.swift in Sources */,
+				C81AEE411E5A704E003D4BCF /* Ref.swift in Sources */,
+				C81AEE431E5A72BB003D4BCF /* DetailViewController.swift in Sources */,
 				C81AEE281E5A6DE7003D4BCF /* AppDelegate.swift in Sources */,
 				C81AEE301E5A6DE7003D4BCF /* Fantastic.xcdatamodeld in Sources */,
 			);
