@@ -16,6 +16,7 @@
 		C81AEE411E5A704E003D4BCF /* Ref.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AEE401E5A704E003D4BCF /* Ref.swift */; };
 		C81AEE431E5A72BB003D4BCF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AEE421E5A72BB003D4BCF /* DetailViewController.swift */; };
 		C81AEE451E5AD96D003D4BCF /* APIDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81AEE441E5AD96D003D4BCF /* APIDataController.swift */; };
+		C84962CB1E5D36F800EF607C /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84962CA1E5D36F800EF607C /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,8 @@
 		C81AEE401E5A704E003D4BCF /* Ref.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ref.swift; path = ../Ref.swift; sourceTree = "<group>"; };
 		C81AEE421E5A72BB003D4BCF /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C81AEE441E5AD96D003D4BCF /* APIDataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIDataController.swift; sourceTree = "<group>"; };
+		C84962C81E5D36F700EF607C /* Fantastic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fantastic.entitlements; sourceTree = "<group>"; };
+		C84962CA1E5D36F800EF607C /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C84962CB1E5D36F800EF607C /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +52,7 @@
 			children = (
 				C81AEE261E5A6DE7003D4BCF /* Fantastic */,
 				C81AEE251E5A6DE7003D4BCF /* Products */,
+				C84962C91E5D36F800EF607C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +67,7 @@
 		C81AEE261E5A6DE7003D4BCF /* Fantastic */ = {
 			isa = PBXGroup;
 			children = (
+				C84962C81E5D36F700EF607C /* Fantastic.entitlements */,
 				C81AEE271E5A6DE7003D4BCF /* AppDelegate.swift */,
 				C81AEE3C1E5A6FBE003D4BCF /* MainViewController.swift */,
 				C81AEE441E5AD96D003D4BCF /* APIDataController.swift */,
@@ -74,6 +80,14 @@
 				C81AEE2E1E5A6DE7003D4BCF /* Fantastic.xcdatamodeld */,
 			);
 			path = Fantastic;
+			sourceTree = "<group>";
+		};
+		C84962C91E5D36F800EF607C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C84962CA1E5D36F800EF607C /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,6 +124,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = GU34HPM3A3;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -277,6 +296,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Fantastic/Fantastic.entitlements;
 				DEVELOPMENT_TEAM = GU34HPM3A3;
 				INFOPLIST_FILE = Fantastic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -290,6 +310,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Fantastic/Fantastic.entitlements;
 				DEVELOPMENT_TEAM = GU34HPM3A3;
 				INFOPLIST_FILE = Fantastic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -318,6 +339,7 @@
 				C81AEE3B1E5A6DE7003D4BCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

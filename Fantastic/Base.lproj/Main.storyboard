@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
+        <!--Fantastic-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Fantastic" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FIe-Xk-7KM" id="9oi-Kr-0Ei">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -45,7 +45,7 @@
                             <constraint firstAttribute="trailing" secondItem="hDT-51-sKm" secondAttribute="trailing" id="yWT-t9-BYx"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yeu-BG-I6D"/>
+                    <navigationItem key="navigationItem" title="Fantastic" id="yeu-BG-I6D"/>
                     <connections>
                         <outlet property="mainTable" destination="hDT-51-sKm" id="HNg-Dn-P2X"/>
                         <segue destination="hId-Ka-bWl" kind="show" identifier="toDetail" id="AOK-6O-xqE"/>
@@ -55,7 +55,7 @@
             </objects>
             <point key="canvasLocation" x="769" y="-645"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Fantastic-->
         <scene sceneID="lRI-uw-HEo">
             <objects>
                 <viewController id="hId-Ka-bWl" customClass="DetailViewController" customModule="Fantastic" customModuleProvider="target" sceneMemberID="viewController">
@@ -83,8 +83,9 @@
                             <constraint firstItem="S2w-PO-2r6" firstAttribute="top" secondItem="Nla-7U-De3" secondAttribute="bottom" id="xGS-Zn-lPv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="oVx-mK-u6N">
+                    <navigationItem key="navigationItem" title="Fantastic" id="oVx-mK-u6N">
                         <barButtonItem key="rightBarButtonItem" title="Add" id="bh9-kU-omt">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="addBarButtonPressed:" destination="hId-Ka-bWl" id="k4i-qK-HZI"/>
                             </connections>
